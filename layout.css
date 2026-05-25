@@ -1,0 +1,320 @@
+/* ==========================================================
+   AWORAN EDITORIAL DESIGN SYSTEM — LAYOUT
+   v1.0 | Nav, Hero, Sections, Grids, Footer
+   ========================================================== */
+
+/* ── NAVBAR ─────────────────────────────────────── */
+.ed-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 2.5rem;
+  z-index: 1000;
+
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+
+  background: rgba(8, 8, 8, 0.78);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+
+  transition: background var(--duration) var(--ease);
+}
+
+.ed-nav__logo {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--accent);
+  transition: opacity var(--duration);
+}
+
+.ed-nav__logo:hover { opacity: 0.7; }
+
+.ed-nav__links {
+  display: flex;
+  gap: 2.2rem;
+}
+
+.ed-nav__links a {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--duration);
+}
+
+.ed-nav__links a:hover { color: var(--white); }
+
+/* ── HERO COVER ─────────────────────────────────── */
+.ed-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.ed-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.ed-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+  transition: transform 8s ease;
+}
+
+.ed-hero:hover .ed-hero__bg img {
+  transform: scale(1.0);
+}
+
+.ed-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.96)  0%,
+    rgba(0, 0, 0, 0.60) 40%,
+    rgba(0, 0, 0, 0.20) 100%
+  );
+}
+
+/* Vertical accent bar on hero */
+.ed-hero__overlay::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--accent);
+  opacity: 0;
+}
+
+.ed-hero__content {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 6.5rem;
+  width: 100%;
+}
+
+.ed-hero__kicker {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.ed-hero__kicker::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.ed-hero__title {
+  font-family: var(--font-serif);
+  font-size: clamp(4.5rem, 12vw, 10rem);
+  line-height: 0.86;
+  margin: 0 0 2.2rem;
+  max-width: 1100px;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+  color: var(--white);
+}
+
+.ed-hero__subtitle {
+  font-size: 1.18rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 680px;
+  font-weight: 300;
+}
+
+.ed-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.4rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ed-hero__meta span {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.ed-hero__meta span:not(:last-child)::after {
+  content: '/';
+  margin-left: 1.4rem;
+  opacity: 0.3;
+}
+
+/* ── SECTION BASE ───────────────────────────────── */
+.ed-section {
+  padding: var(--section-pad);
+}
+
+.ed-section--sm {
+  padding: var(--section-pad-sm);
+}
+
+.ed-section--dark {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border-faint);
+  border-bottom: 1px solid var(--border-faint);
+}
+
+.ed-section--surface {
+  background: var(--surface);
+}
+
+/* ── EDITORIAL GRID — 2 cols ────────────────────── */
+.ed-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.ed-grid--reverse {
+  grid-template-columns: 0.85fr 1.15fr;
+}
+
+.ed-grid--equal {
+  grid-template-columns: 1fr 1fr;
+}
+
+.ed-grid--thirds {
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .ed-grid,
+  .ed-grid--reverse,
+  .ed-grid--equal {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+  
+  .ed-grid--reverse .ed-grid__image {
+    order: -1;
+  }
+
+  .ed-grid--thirds {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .ed-grid--thirds {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── EDITORIAL IMAGE ────────────────────────────── */
+.ed-image {
+  width: 100%;
+  border-radius: var(--radius);
+  object-fit: cover;
+  box-shadow: var(--shadow);
+  display: block;
+}
+
+.ed-image--square {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.ed-image--tall {
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+/* ── DIVIDER ────────────────────────────────────── */
+.ed-divider {
+  height: 1px;
+  background: var(--border-faint);
+  margin: 0;
+}
+
+.ed-divider--accent {
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    var(--accent),
+    transparent 60%
+  );
+}
+
+/* ── SPACER ─────────────────────────────────────── */
+.ed-spacer { display: block; }
+.ed-spacer--xs { height: 1.5rem; }
+.ed-spacer--sm { height: 3rem; }
+.ed-spacer--md { height: 5rem; }
+.ed-spacer--lg { height: 8rem; }
+
+/* ── FOOTER ─────────────────────────────────────── */
+.ed-footer {
+  border-top: 1px solid var(--border);
+  padding: 3.5rem 0;
+}
+
+.ed-footer__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.ed-footer__text,
+.ed-footer__link {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color var(--duration);
+}
+
+.ed-footer__link:hover { color: var(--text-muted); }
+
+/* ── NAV RESPONSIVE ─────────────────────────────── */
+@media (max-width: 768px) {
+  .ed-nav { padding: 0 1.25rem; }
+  .ed-nav__links { display: none; }
+
+  .ed-hero__content { padding-bottom: 4rem; }
+
+  .ed-section { padding: 5rem 0; }
+}
