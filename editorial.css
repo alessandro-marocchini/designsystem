@@ -5,7 +5,7 @@
    Font: Outfit · Inter · system-ui stack
    ========================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap');
+/* Google Fonts caricato via <link> in HTML — non serve @import qui */
 
 /* ══════════════════════════════════════════════════════════
    TOKENS — LIGHT MODE (default)
@@ -149,31 +149,38 @@ ul,ol { list-style: none; }
    TYPOGRAPHY
 ══════════════════════════════════════════════════════════ */
 h1,.h1 {
-  font-family: var(--font-serif);
+  font-family: var(--font-serif);       /* Instrument Serif — solo hero e display */
   font-size: clamp(3rem,7vw,6rem);
   line-height: .92;
   letter-spacing: -.02em;
   font-weight: 400;
 }
 h2,.h2 {
-  font-family: var(--font-serif);
-  font-size: clamp(2.2rem,4.5vw,4rem);
-  line-height: 1.05;
-  letter-spacing: -.015em;
-  font-weight: 400;
+  font-family: var(--font-sans);        /* Outfit — sezioni articolo */
+  font-size: clamp(1.9rem,3.8vw,3.2rem);
+  line-height: 1.12;
+  letter-spacing: -.02em;
+  font-weight: 600;
   max-width: 900px;
   margin-bottom: 1.6rem;
   color: var(--text);
 }
 h3,.h3 {
-  font-family: var(--font-mono);
+  font-family: var(--font-mono);        /* DM Mono — label tecnici */
   font-size: .76rem;
   letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--text-muted);
   font-weight: 400;
 }
+h4,.h4 {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
 p {
+  font-family: var(--font-sans);
   font-size: 1.05rem;
   line-height: 1.78;
   color: var(--text-muted);
@@ -183,6 +190,7 @@ p {
 }
 p:last-child { margin-bottom: 0; }
 p.lead {
+  font-family: var(--font-sans);
   font-size: 1.22rem;
   line-height: 1.7;
   color: var(--text);
@@ -223,7 +231,8 @@ em { font-family: var(--font-serif); font-style: italic; }
 
 /* Pull quote */
 .pull-quote {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
+  font-weight: 600;
   font-size: clamp(1.8rem,3.5vw,3rem);
   line-height: 1.15;
   color: var(--text);
@@ -537,7 +546,7 @@ pre code { background: none; padding: 0; font-size: .84rem; color: var(--text-mu
 }
 .ed-stat:hover { background: var(--surface-2); }
 .ed-stat__number {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(2.8rem,6vw,4.5rem);
   line-height: 1;
   color: var(--accent);
@@ -764,7 +773,7 @@ pre code { background: none; padding: 0; font-size: .84rem; color: var(--text-mu
   letter-spacing: .1em; color: var(--text-muted);
   margin-bottom: .8rem; display: block;
 }
-.ed-tier__title { font-family: var(--font-serif); font-size: 1.6rem; color: var(--text); margin-bottom: 1rem; line-height: 1.2; }
+.ed-tier__title { font-family: var(--font-sans); font-weight: 600; font-size: 1.6rem; color: var(--text); margin-bottom: 1rem; line-height: 1.2; }
 .ed-tier__desc { font-size: .95rem; color: var(--text-muted); line-height: 1.7; margin: 0; max-width: none; }
 @media (max-width: 768px) { .ed-tier-grid { grid-template-columns: 1fr; } }
 
